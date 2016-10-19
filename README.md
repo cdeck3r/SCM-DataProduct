@@ -18,3 +18,7 @@ Customer segment / target audience
 * Prospective SCM candidates
 * SCM students
 * Alumni
+
+## Project Presentation
+
+[Initial project presentation](https://github.com/cdeck3r/SCM-DataProduct/blob/master/Projekt%20SCMalsDataProduct.pdf) (ger) given by Christian Decker.
