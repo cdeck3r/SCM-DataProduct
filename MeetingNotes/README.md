@@ -1,6 +1,6 @@
 Place to store all meeting notes.
 
-Notes are taken using minutes.io. 
+Notes are taken using [minutes.io](https://minutes.io). 
 
 Instructions for printing notes as pdf (for firefox)
 
