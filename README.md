@@ -2,7 +2,7 @@
 
 Services Computing is the science and engineering of IT-focused value creation for the digital business. An overview is provided by the [SCM Vision Board](http://www.hhz.de/fileadmin/user_upload/Hermann_Hollerith_Zentrum/Master/Services_Computing/SCMVisionBoard.jpg).
 
-This is student research project presenting [Services Computing masters programme (SCM) at the HHZ](http://www.hhz.de/master/services-computing/)  as data product.
+This student research project presents the [Services Computing masters programme (SCM) at the HHZ](http://www.hhz.de/master/services-computing/)  as data product.
 
 ## Objectives
 
