@@ -1,6 +1,6 @@
 # SCM as a DataProduct
 
-Services Computing is the science and engineering of IT-focused value creation for the digital business. An overview is provided by the [SCM Vision Board](http://www.hhz.de/fileadmin/user_upload/Hermann_Hollerith_Zentrum/Master/Services_Computing/SCMVisionBoard.jpg). The [Herman Hollerith Center (HHZ)](http://www.hhz.de) offers a scientifically ambitious masters programme on Services Computing.
+Services Computing is the science and engineering of IT-focused value creation for the digital business. The [Herman Hollerith Center (HHZ)](http://www.hhz.de) offers a scientifically ambitious masters programme on Services Computing (SCM). An overview is provided by the [SCM Vision Board](http://www.hhz.de/fileadmin/user_upload/Hermann_Hollerith_Zentrum/Master/Services_Computing/SCMVisionBoard.jpg).
 
 This student research project presents the [Services Computing masters programme (SCM)](http://www.hhz.de/master/services-computing/) as data product. 
 
