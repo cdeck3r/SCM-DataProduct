@@ -27,5 +27,5 @@ Customer segment / target audience
 
 ## Projektsteckbrief 
 
-[Der Steckbrief des Projektes zum nachlesen](https://github.com/cdeck3r/SCM-DataProduct/blob/master/Projektsteckbrief.pptx) 
+[Der Steckbrief des Projektes zum nachlesen](https://github.com/cdeck3r/SCM-DataProduct/blob/master/Projektsteckbrief.pdf) 
 
