@@ -1,8 +1,10 @@
 Place to store all meeting notes.
 
-Notes are taken using [minutes.io](https://minutes.io). 
+The Notes are taken using an selfmade [Google-Drive Template](https://github.com/cdeck3r/SCM-DataProduct/blob/master/MeetingNotes/Vorlage_Protokoll.pdf)
 
-Instructions for printing notes as pdf (for firefox)
+The first Note is taken using [minutes.io](https://minutes.io). 
+
+Instructions for printing notes from minutes.io as pdf (for firefox)
 
 1. in the note view, hit Alt+f to open the browser menu
 1. hit v afterwards to enter to print preview
