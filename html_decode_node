@@ -2,5 +2,5 @@
 
 const Entities = require('html-entities').XmlEntities;
 const entities = new Entities();
-
-console.log(entities.decode(str)); //str = String with html Encodings
+var str = answer // hier kommt der Antwort String von QnA Maker mit html Encodings rein
+console.log(entities.decode(str)); //Gibt den Decodierten String mit Umlauten in der Console aus. Je nach verwendeungszewck natürlich in eine Variable schreiben.
