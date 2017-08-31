@@ -1,0 +1,6 @@
+//Decode html Entities in node.js using html-entities
+
+const Entities = require('html-entities').XmlEntities;
+const entities = new Entities();
+
+console.log(entities.decode(str)); //str = String with html Encodings
