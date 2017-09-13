@@ -1,0 +1,83 @@
+exports.handler = (event, context, callback) => {
+
+    // VIEW DOCS HERE:  https://github.com/MotionAI/nodejs-samples
+
+    /* "event" object contains payload from Motion AI
+        {
+            "from":"string", // the end-user's identifier (may be FB ID, email address, Slack username etc, depends on bot type)
+            "session":"string", // a unique session identifier
+            "botId":"string", // the Motion AI ID of the bot
+            "botType":"string", // the type of bot this is (FB, Slack etc)
+            "customPayload":"string", // a developer-defined payload for carrying information
+            "moduleId":"string", // the current Motion AI Module ID
+            "moduleNickname":"string", // the current Motion AI Module's nickname
+            "inResponseTo":"string", // the Motion AI module that directed the conversation flow to this module
+            "reply":"string", // the end-user's reply that led to this module
+            "result":"string" // any extracted data from the prior module, if applicable,
+            "replyHistory":"object" // an object containing the current session's conversation messages
+            "nlpData":"object" // stringified NLP data object parsed from a user's message to your bot if NLP engine is enabled
+            "customVars":"string" // stringified object containing any existing customVars for current session
+            "fbUserData":"string" // for Messenger bots only - stringified object containing user's meta data - first name, last name, and id
+            "attachedMedia":"string" // for Messenger bots only - stringified object containing attachment data from the user
+        }
+    */
+
+    // this is the object we will return to Motion AI in the callback
+    var responseJSON = {
+        "response": "", // what the bot will respond with
+        "continue": true, // "true" will result in Motion AI continuing the flow based on connections, whie "false" will make Motion AI hit this module again when the user replies
+        "customPayload": "", // OPTIONAL: working data to examine in future calls to this function to keep track of state
+        "quickReplies":["FAQ beenden"], // OPTIONAL: a JSON string array containing suggested/quick replies to display to the user .. i.e., ["Hello","World"]
+        "cards": null, // OPTIONAL: a cards JSON object to display a carousel to the user (see docs)
+        "customVars": null, // OPTIONAL: an object or stringified object with key-value pairs to set custom variables eg: {"key":"value"} or '{"key":"value"}'
+        "nextModule":1163681, // OPTIONAL: the ID of a module to follow this Node JS module
+    }
+
+
+    // Für den request an QnA Maker via motion.ai wird "request" verwendet https://github.com/request/request
+    var request = require('request');
+    //event.reply enthält die User - Antwort an den Chatbot, welche an QnA Maker übergeben werden sollen. 
+    var umpf = event.reply;
+   
+    
+    //motion.ai übergibt die Antwort in event.reply in einem escaped string, daher muss vor der Übergabe an QnA Maker dieser mit unescape wieder umgewandelt werden. 
+    umpf = unescape(umpf);
+    
+    // Erstellen des Objektes zur Übergabe an den QnA Maker. "top" gibt dabei an, wie viele passende Antworten der QnA Maker zurückliefern soll.
+    var q = JSON.stringify({
+    "question": umpf,
+    "top": 1
+    });
+
+
+
+//Der Request an QnA Maker
+    request({
+        uri:"https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases/KNOWLEDGEBASE ID GOES HERE/generateAnswer",
+        method: "POST",
+    	  headers:{
+        'Ocp-Apim-Subscription-Key':'SUBSCRIPTION KEY GOES HERE',
+        'Content-Type':'application/json'
+        },
+    	 body: q},
+    	function (error, response, body) {
+
+            var json = JSON.parse(body);
+            //QnA Maker liefert ein Array aus Antworten zurück ( Wie viele hängt von der Angegebenen Anzahl bei "top" ab, welche nach dem scoring sortiert werden.
+            //json.answers[0].answer; gibt die am besten gerankte Antwort aus.
+            var answr = json.answers[0].answer;
+                
+                //Abfangen nicht vorhandener Antworten
+                if (answr == "No good match found in the KB") {
+                    answr = "Leider konnte ich keine Antwort auf deine Frage finden, bitte formuliere diese neu oder stelle eine andere Frage"
+    
+                }
+                
+          //motion.ai spezifische Rückgabe der Antwort aus QnA an den Chatbot.     
+          responseJSON.response = answr;
+          
+          callback(null, responseJSON);
+
+    });
+
+};
